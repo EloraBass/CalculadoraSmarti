@@ -34,10 +34,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button borrar;
     private Button raiz;
     private EditText et;
-    private String display;
-    private double valor1 = 0;
-    private double valor2 = 0;
-    private double resultado;
+    //VARIABLES QUE VAMOS A UTILIZAR
+    private String display; //CADENA DE TEXTO DEL DISPLAY
+    private double valor1 = 0; //OPERADOR
+    private double valor2 = 0; //OPERADOR
+    private double resultado; //RES
     private boolean flagEscritura = false; //CUANDO ES TRUE COMIENZA A ESCRIBIR EN EL EDITTEXT. SI ES FALSE HACE APPEND EN EL ET
     private int operador = -1; //-1 no hay; 1 suma; 2 resta; 3 multiplica; 4 divide
 
@@ -223,10 +224,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 et.setText("");
                 valor1 = 0;
                 valor2 = 0;
+                operador = -1;
                 break;
             case R.id.button12:
                 if(et.getText().toString().isEmpty()){
-                    Toast.makeText(this, "NO HAY VALORES", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getResources().getString(R.string.msg_error), Toast.LENGTH_LONG).show();
                 }else{
                     valor1 = Double.parseDouble(et.getText().toString());
                     valor1 = Math.sqrt(valor1);
@@ -242,6 +244,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     valor1 = Double.parseDouble(et.getText().toString());
                     valor1 = valor1/100;
                     et.setText(String.valueOf(valor1));
+                    //MODIFICAMOS EL VALOR DEL FLAGESCRITURA PARA QUE NO SIGA ESCRIBIENDO!!!
+                    flagEscritura = true;
                 }
                 break;
 
@@ -256,7 +260,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         valor2 = valor1;
                     }else{
                         resultado = operar(operador, valor2, valor1);
-                        operador = -1;
+                        valor2 = resultado;
+                        operador = 4;
                         et.setText(String.valueOf(resultado));
                     }
                 }
@@ -272,8 +277,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         operador = 3;
                         valor2 = valor1;
                     }else{
+
                         resultado = operar(operador, valor2, valor1);
-                        operador = -1;
+                        operador = 3;
+
+                        valor2 = resultado;
+                        //operador = -1;
                         et.setText(String.valueOf(resultado));
                     }
                 }
@@ -283,15 +292,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             //SUMAR
             case R.id.button34:
+                Log.i("EL OPERADOR VALE", "EL OPERADOR : " + operador);
                 if (et.getText().toString().isEmpty()){
                     Toast.makeText(this, getResources().getString(R.string.msg_error), Toast.LENGTH_LONG).show();
                 }else{
                     if (operador == -1){
                         operador = 1;
                         valor2 = valor1;
+                        Log.i("VALOR 2 ANTES DE SUMAR", "VALOR 2 ES: " + valor2);
                     }else{
+
+                        Log.i("VALOR 1 ANTES DE SUMAR", "VALOR 1 ES: " + valor1);
                         resultado = operar(operador, valor2, valor1);
-                        operador = -1;
+                        operador = 1;
+                        valor2 = resultado;
+                        Log.i("VALOR 1 DESPUES DE SUMA", "EL VALOR 1 ES: " + valor1);
+                        //operador = -1;
                         et.setText(String.valueOf(resultado));
                     }
                 }
@@ -308,7 +324,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         valor2 = valor1;
                     }else{
                         resultado = operar(operador, valor2, valor1);
-                        operador = -1;
+                        valor2 = resultado;
+                        operador = 2;
                         et.setText(String.valueOf(resultado));
                     }
                 }
@@ -353,26 +370,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
-    public Double operar (int operador, Double valor1, Double valor2){
+    public Double operar (int operador, Double operadorA, Double operadorB){
 
         Double resultado = null;
 
         switch (operador){
             case 1:
-                resultado = valor1 + valor2;
+                resultado = operadorA + operadorB;
 
                 break;
             case 2:
-                resultado = valor1 - valor2;
+                resultado = operadorA - operadorB;
 
                 break;
             case 3:
-                resultado = valor1 * valor2;
+                resultado = operadorA * operadorB;
 
                 break;
             case 4:
                 try{
-                    resultado = valor1 / valor2;
+                    resultado = operadorA / operadorB;
 
                 }catch(Exception e){
                     Toast.makeText(this, getResources().getString(R.string.msg_error_division), Toast.LENGTH_LONG).show();

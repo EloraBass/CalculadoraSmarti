@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/build/intermediates/res/merged/release/drawable/decorabarra.xml",
+        "source": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/src/main/res/drawable/decorabarra.xml"
+    },
+    {
+        "merged": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/build/intermediates/res/merged/release/drawable/botones.xml",
+        "source": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/src/main/res/drawable/botones.xml"
+    },
+    {
+        "merged": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/build/intermediates/res/merged/release/drawable/fondo_botones_inverso.xml",
+        "source": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/src/main/res/drawable/fondo_botones_inverso.xml"
+    },
+    {
+        "merged": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/build/intermediates/res/merged/release/drawable/fondo_botones.xml",
+        "source": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/src/main/res/drawable/fondo_botones.xml"
+    },
+    {
+        "merged": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/build/intermediates/res/merged/release/drawable/icono.png",
+        "source": "/Users/Paco/AndroidStudioProjects/CalculadoraSmarti/app/src/main/res/drawable/icono.png"
+    }
+]
